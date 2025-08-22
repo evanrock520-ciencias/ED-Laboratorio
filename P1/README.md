@@ -1,3 +1,5 @@
+## Práctica 1
+
 El objetivo de está prática es el de conocer el entorno que usaremos durante todo el semestre en el laboratorio de Estructuras Discretas.
 
 Mi versión de GHC es la siguiente :
