@@ -1,17 +1,17 @@
-## Preguntas de la práctica 1
+# Preguntas de la práctica 1
 
-# 1. ¿Cuales son las principales diferencias en Haskell y Java?
+## 1. ¿Cuales son las principales diferencias en Haskell y Java?
 
 La principal diferencia que he notado es la del enfoque que toma cada uno de los lenguajes. Java es un lenguaje puramente orientado a objetos y Haskell uno orientado a la funcionalidad. También tengo entendido Haskell está basado en el cálculo lambda y Java como la mayoria de lenguajes no funcionales lo está en las maquinas de Turing.
 
 Haskell posee características especiales que lo distinguen, como la **inmutabilidad** 🔒 y la **lazy evaluation** 💤 (Mansuroglu, s.f.), que permiten que los valores no cambien una vez definidos y que las expresiones solo se evalúen cuando son necesarias. Mientras en Java los datos si pueden cambiar su valor y se hace una evaluación estricta del código.
 
-# 2. ¿Porque Haskell no ha alcanzado una adopción significativa en la industria del software?
+## 2. ¿Porque Haskell no ha alcanzado una adopción significativa en la industria del software?
 
 Haskell es considerado un lenguaje *no convencional*, pues está basado en la programación *funcional pura*, mientras la mayoria de los lenguajes estándar en la industria son de tipo imperativo u orientados a objetos. 
 Eso mismo produce una comunidad mucho más pequeña con menos recursos, frameworks y herramientas disponibles, lo que limita su adopción en proyectos de gran escala.
 
-# 3. Si pudieras realizar una analogia entre Git y Github ¿Cuál se te vendria a la mente?
+## 3. Si pudieras realizar una analogia entre Git y Github ¿Cuál se te vendria a la mente?
 
 Creo que es algo burdo pero de alguna manera se me viene a la mente una asociación con la música. 🎵🎵🎵
 
