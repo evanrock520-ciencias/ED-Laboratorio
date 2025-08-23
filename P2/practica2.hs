@@ -1,3 +1,11 @@
+-- Práctica 2 : Creación de funciones en Haskell
+
+{-
+    Función: Es un función que regresará una cadena concatenada a "Hello, "
+    Descripción: Concatena una cadena que mandamos a "Hello, "
+    Uso: "Hello, my friend"
+-}
+
 sayHello :: String -> String
 sayHello x = "Hello, " ++ x
 
@@ -11,7 +19,10 @@ menor x y z =
     else 
         if y > z
             then y
-            else z
+            else 
+                if z > x
+                    then x
+                    else z
 
 decide ::  Bool -> String -> String -> String
 decide x y z = 
