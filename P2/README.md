@@ -1,4 +1,4 @@
 ## Práctica 2
 
 # Prompt
-![Imágen del Prompt](prompt.png)
+![Imágen del Prompt](ghc.png)
