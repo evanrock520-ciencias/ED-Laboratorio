@@ -98,3 +98,14 @@ pendiente (x1,y1) (x2,y2) = (y2 - y1) / (x2 - x1)
 
 distanciaPuntos :: (Float, Float) -> (Float, Float) -> Float
 distanciaPuntos (x1, y1) (x2, y2) = sqrt(((x2 - x1) ** 2) + ((y2 - y1) ** 2))
+
+{-
+    Función: cuadrados
+    Descripción: Toma una lista de valores enteros y retorna la lista con las potencias de esos enteros
+    Uso: cuadrados [1, 4, 8] = [1, 16, 64] 
+-}
+
+
+cuadrados :: [Int] -> [Int]
+cuadrados [] = []
+cuadrados (x:xs) = (x * x) : cuadrados xs
