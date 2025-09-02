@@ -1,5 +1,7 @@
 # Repositorio de Estructuras Discretas
 
-Nombre : Evan Miranda Martínez
+## Nombre : 
+Evan Miranda Martínez
 
-\nNúmero de Cuenta : 323149846
+## Número de Cuenta : 
+323149846
