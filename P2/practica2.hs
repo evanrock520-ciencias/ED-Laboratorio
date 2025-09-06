@@ -41,7 +41,7 @@ menor x y z =
 
 
 decide ::  Bool -> String -> String -> String
-decide x y z = 
+decide x y z =
     if x == True
         then y
         else z
@@ -54,7 +54,7 @@ decide x y z =
 -}
 
 esDescendiente :: Int -> Int -> Int -> Int -> Bool
-esDescendiente a b c d = 
+esDescendiente a b c d =
     if a > b && b > c && c > d
         then True
         else False
@@ -69,7 +69,7 @@ esDescendiente a b c d =
 esDivisible :: Int -> Int -> String
 esDivisible x y =
     if y /= 0
-        then show(x) ++ " es divisible entre " ++ show(y)
+        then show (x) ++ " es divisible entre " ++ show (y)
         else "No se puede dividir entre 0"
 
 {-
@@ -79,7 +79,7 @@ esDivisible x y =
 -}
 
 hipotenusa :: Float -> Float -> Float
-hipotenusa x y = sqrt((x ** 2) + (y ** 2))
+hipotenusa x y = sqrt ((x ** 2) + (y ** 2))
 
 {-
     Función: pendiente
@@ -97,7 +97,7 @@ pendiente (x1,y1) (x2,y2) = (y2 - y1) / (x2 - x1)
 -}
 
 distanciaPuntos :: (Float, Float) -> (Float, Float) -> Float
-distanciaPuntos (x1, y1) (x2, y2) = sqrt(((x2 - x1) ** 2) + ((y2 - y1) ** 2))
+distanciaPuntos (x1, y1) (x2, y2) = sqrt (((x2 - x1) ** 2) + ((y2 - y1) ** 2))
 
 {-
     Función: cuadrados
@@ -107,5 +107,4 @@ distanciaPuntos (x1, y1) (x2, y2) = sqrt(((x2 - x1) ** 2) + ((y2 - y1) ** 2))
 
 
 cuadrados :: [Int] -> [Int]
-cuadrados [] = []
-cuadrados (x:xs) = (x * x) : cuadrados xs
+cuadrados xs = [x*x | x <- xs]

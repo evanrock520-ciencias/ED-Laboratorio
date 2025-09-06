@@ -10,6 +10,6 @@ Está práctica tuvo como objetivo; aprender y aplicar las herramientas de GHC y
 La imagen del *prompt* cargando la función `sayHello`.
 
 ## Tiempo Requerido
-Para realizar esta práctica me tarde varios dias en los que dividi las tareas. Realizar las funciones, hacer los comentarios de las funciones y realizar la función extra. (Cuadrados está usando recursión. Sigo pensando una manera de hacerlo sin ella.)
+Para realizar esta práctica me tarde varios dias en los que dividi las tareas. Realizar las funciones, hacer los comentarios de las funciones y realizar la función extra.
 
-Me tarde juntando todos los módulos alrededor de *2 horas*. Aunque el contandor sigue sumando.
+Me tarde juntando todos los módulos alrededor de *2 horas* para terminar la práctica. 
