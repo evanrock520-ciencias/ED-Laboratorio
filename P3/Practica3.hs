@@ -55,3 +55,11 @@ primos xs = [x | x <- xs, x > 1, null [n | n <- [2..(x `div` 2)], x `mod` n == 0
     Uso: conjuntoListas [1, 4, 1, 8, 4, 0] = [1, 4, 8, 0]
 -}
 
+conjuntoListas :: [Int] -> [Int]
+conjuntoListas xs = 
+    
+
+encontrarNumero :: Int -> [Int] -> Int
+encontrarNumero n xs = 
+    if  
+
