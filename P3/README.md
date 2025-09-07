@@ -7,7 +7,7 @@ Además de también tentar el terreno para la recursión y aplicar commits semá
 
 # Diferencia entre `Num` e `Int`
 
-![Imágen de la Consola comparando Num e Int](/Images/NumInt.png)
+![Imágen de la Consola comparando Num e Int](https://github.com/evanrock520-ciencias/ED-Laboratorio/blob/main/P3/Images/NumInt.png)
 
 # Recursión First Steps
 
