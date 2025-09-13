@@ -30,10 +30,14 @@ ghci> :t (17 :: Int)
 
 La canción del **Pollito Pio** puede ilustrar de manera muy práctica y sencilla el concepto de la **recursión**. 
 
-Para comenzar, contamos con un **caso base** (en este particular lo es el **Pollito**) que es el minimal de toda la canción y al que de alguna manera siempre se regresa.
+
+Para comenzar, contamos con un **caso base** (en este particular lo es el **Pollito**) que es el minimal de toda la canción y al que de alguna manera siempre se regresa
+
+
 Como el **el caso recursivo** tenemos la generación de los demás animales en los que cada uno está relacionado con el anterior. Si queremos llegar al *Perro* tenemos que pasar también por el *Gato* y la *Paloma*, de manera muy similar al concepto de generación de conjuntos recursivos de los naturales. 
+
 
 También cumple una **condición de terminación**, el *Tractor* que aplasta al Pollito puede verse como el final del proceso recursivo.  
 
 ## Tiempo requerido
-Contando hasta el momento el tiempo requerido para esta práctica ha sido de `1 hora y 15 minutos`. Solo falta por implementar la última función.  
+Contando hasta el momento el tiempo requerido para esta práctica ha sido de `1 hora y 30 minutos`.  
