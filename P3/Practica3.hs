@@ -47,7 +47,7 @@ negativos xs = length [x | x <- xs, x < 0]
 -}
 
 primos :: [Int] -> [Int]
-primos xs = [x | x <- xs, x > 1, null [n | n <- [2..(x `div` 2)], x `mod` n == 0]]
+primos xs = [x | x <- xs, x > 1, length [n | n <- [2..(x `div` 2)], x `mod` n == 0] == 0]
 
 {-
     Función: conjuntoListas
@@ -56,10 +56,15 @@ primos xs = [x | x <- xs, x > 1, null [n | n <- [2..(x `div` 2)], x `mod` n == 0
 -}
 
 conjuntoListas :: [Int] -> [Int]
-conjuntoListas xs = 
-    
+conjuntoListas [] = []
+conjuntoListas (x:xs) = x : conjuntoListas (filtrar (/= x) xs)
 
-encontrarNumero :: Int -> [Int] -> Int
-encontrarNumero n xs = 
-    if  
+{-
+    Función: filtrar
+    Descripción: Función auxiliar de conjuntoListas que se queda con los elementos
+                 que hacen que la función predicado devuelva True.
+    Uso: filtrar (/= 1) [1, 8, 1, 3] = [8, 3]
+-}
 
+filtrar :: (Int -> Bool) -> [Int] -> [Int]
+filtrar p xs = [ y | y <- xs, p y]
