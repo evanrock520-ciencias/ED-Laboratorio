@@ -1,5 +1,6 @@
+import Tipos (Natural(..)) 
+import Aux (sumaNatural, multiNatural)
 
-data Natural = Cero | S Natural deriving (Eq, Show)
 
 {-
     Función: a_natural
@@ -22,14 +23,6 @@ a_entero :: Natural -> Int
 a_entero Cero = 0
 a_entero (S m) = 1 + a_entero m
 
-sumaNatural :: Natural -> Natural -> Natural
-sumaNatural Cero n = n
-sumaNatural (S m) n = sumaNatural m (S n)
-
-multiNatural :: Natural -> Natural -> Natural
-multiNatural Cero n = Cero
-multiNatural (S m) n = sumaNatural n (multiNatural n m)
-
 {-
     Función: potenciaNat
     Descripción: Eleva el primer número natural a la potencia del segundo
@@ -43,7 +36,7 @@ potenciaNat m (S n)    = multiNatural m (potenciaNat m n)
 
 {-
     Función: factNat
-    Descripción: Eleva el primer número natural a la potencia del segundo
+    Descripción: Saca el factorial del Natural
     Uso: factNat (S (S (S (Cero))) = (S (S (S (S (S (S (Cero)))))))
 -}
 
