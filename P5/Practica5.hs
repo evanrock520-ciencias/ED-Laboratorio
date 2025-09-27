@@ -16,7 +16,7 @@ hollerBack (x:xs) = toUpper x : hollerBack xs
 {-
     Función: palindromo
     Descripción: Toma una lista de cualquier tipo y devuelve True si es palíndromo
-    Uso: palindromo ["a", "n", "a"] = True
+    Uso: palindromo "ana" = True
 
 -}
 
