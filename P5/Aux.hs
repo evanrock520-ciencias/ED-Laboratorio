@@ -1,9 +1,9 @@
 module Aux (reversa) where
 
 {-
-    Función:
-    Descripción:
-    Uso:
+    Función: reversa
+    Descripción: Recibe una lista y devuelve sus elementos en reversa
+    Uso: reversa "pollitoConPapas" = "sapaPnoCotillop"
 -}
 
 reversa :: [a] -> [a]
