@@ -54,10 +54,10 @@ recuperaElemento (x:xs) n =
 
 {-
     Función: rota
-    Descripción: Toma una lista y devuelve el elemento del indice es-
-    pecificado en la lista.
-    Uso: Toma una lista y traslada el primer elemento de una lista xs al final.
+    Descripción: Toma una lista y traslada el primer elemento de una lista xs al final.
     Se repite esta acción n veces usando la lista resultante en cada paso.
+    Uso: rota [3,6,9,12,15] 4 = [15,3,6,9,12]
+
 -}
 
 rota :: [Int] -> Int -> [Int]
