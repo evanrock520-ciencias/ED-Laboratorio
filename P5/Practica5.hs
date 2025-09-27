@@ -69,12 +69,12 @@ rota (x:xs) n = rota (xs ++ [x]) (n - 1)
     Función: extranio
     Descripción: Toma como entrada un entero positivo. Si es par lo divide entre 2
     si es impar lo multiplica por 3 y le suma 1.
-    Uso: extranio 12 = [6,3,10,5,16,8,4,2,1,1]
+    Uso: extranio 12 = [6,3,10,5,16,8,4,2,1]
 
 -}
 
 extranio :: Int -> [Int]
-extranio 1 = [1]
+extranio 1 = []
 extranio n =
     if even n
         then (n `div` 2) : extranio (n `div` 2)
