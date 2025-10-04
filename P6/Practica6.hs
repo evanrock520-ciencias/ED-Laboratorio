@@ -1,4 +1,4 @@
-import Aux(altura, Arbol(Vacio, AB))
+import Aux(listaArbolReversa, inserta, altura, Arbol(Vacio, AB))
 
 {-
     Función: nVacios
@@ -48,7 +48,7 @@ recorrido (AB r t1 t2) = recorrido t1 ++ [r] ++ recorrido t2
 {-
     Función: esBalanceado
     Descripción: Verifica si un árbol está balanceado.
-    Uso:
+    Uso: balanceado (AB 1 (AB 2 Vacio Vacio) (AB 3 (AB 6 Vacio Vacio) Vacio)) = True
 -}
 
 balanceado :: Arbol a -> Bool
@@ -56,7 +56,13 @@ balanceado Vacio = True
 balanceado (AB r t1 t2) = abs (altura t1 - altura t2) <= 1 && balanceado t1 && balanceado t2
 
 {-
-    Función: 
-    Descripción:
+    Función: listaArbol
+    Descripción: Recibe una lista de elementos y regresa un árbol binario
+    de búsqueda
     Uso:
 -}
+
+listaArbol :: (Ord a) => [a] -> Arbol a
+listaArbol [] = Vacio
+listaArbol xs = listaArbolReversa(reverse xs)
+
