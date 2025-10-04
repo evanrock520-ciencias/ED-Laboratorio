@@ -24,22 +24,26 @@ refleja (AB r t1 t2) = AB r (refleja t2) (refleja t1)
 {-
     Función: minimo
     Descripción: Devuelve el elemento mínimo de un árbol.
-    Uso:
+    Uso: minimo (AB 2 (AB 10 Vacio Vacio) (AB 1 Vacio Vacio)) = 1
 -}
 
 minimo :: (Eq a) => (Ord a) => Arbol a -> a
 minimo Vacio = error "El árbol vacío no tiene elementos"
 minimo (AB r Vacio Vacio) = r
 minimo (AB r t1 t2) 
-    | r == minimo t1 || r == minimo t2 = r
-    | r < minimo t1 && r < minimo t2 = r
+    | r <= minimo t1 && r <= minimo t2 = r
     | minimo t1 < minimo t2 = minimo t1
     | minimo t2 < minimo t1 = minimo t2
+
 {-
-    Función:
-    Descripción:
-    Uso:
+    Función: recorrido
+    Descripción: Regresa una lista del árbol con el recorrido inOrden.
+    Uso: recorrido ( AB 4 Vacio ( AB 1 (AB 8 (AB 12 Vacio Vacio) Vacio ) ( AB 10 Vacio Vacio ) ) ) = [4,12,8,1,10]
 -}
+
+recorrido :: Arbol a -> [a]
+recorrido Vacio = []
+recorrido (AB r t1 t2) = recorrido t1 ++ [r] ++ recorrido t2
 
 {-
     Función:
