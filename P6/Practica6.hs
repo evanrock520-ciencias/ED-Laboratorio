@@ -22,11 +22,19 @@ refleja Vacio = Vacio
 refleja (AB r t1 t2) = AB r (refleja t2) (refleja t1)
 
 {-
-    Función:
-    Descripción:
+    Función: minimo
+    Descripción: Devuelve el elemento mínimo de un árbol.
     Uso:
 -}
 
+minimo :: (Eq a) => (Ord a) => Arbol a -> a
+minimo Vacio = error "El árbol vacío no tiene elementos"
+minimo (AB r Vacio Vacio) = r
+minimo (AB r t1 t2) 
+    | r == minimo t1 || r == minimo t2 = r
+    | r < minimo t1 && r < minimo t2 = r
+    | minimo t1 < minimo t2 = minimo t1
+    | minimo t2 < minimo t1 = minimo t2
 {-
     Función:
     Descripción:
