@@ -11,10 +11,15 @@ nVacios Vacio = 1
 nVacios (AB r t1 t2) = nVacios t1 + nVacios t2
 
 {-
-    Función:
-    Descripción:
+    Función: refleja
+    Descripción: Hace que los subárboles izquierdos se vuelvan
+    subárboles derechos y viceversa.
     Uso:
 -}
+
+refleja :: Arbol a -> Arbol a
+refleja Vacio = Vacio
+refleja (AB r t1 t2) = AB r (refleja t2) (refleja t1)
 
 {-
     Función:
