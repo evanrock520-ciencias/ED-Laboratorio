@@ -1,4 +1,4 @@
-data Arbol a = Vacio | AB a (Arbol a) (Arbol a) deriving (Eq, Ord, Show)
+import Aux(altura, Arbol(Vacio, AB))
 
 {-
     Función: nVacios
@@ -46,13 +46,17 @@ recorrido Vacio = []
 recorrido (AB r t1 t2) = recorrido t1 ++ [r] ++ recorrido t2
 
 {-
-    Función:
-    Descripción:
+    Función: esBalanceado
+    Descripción: Verifica si un árbol está balanceado.
     Uso:
 -}
 
+balanceado :: Arbol a -> Bool
+balanceado Vacio = True
+balanceado (AB r t1 t2) = abs (altura t1 - altura t2) <= 1 && balanceado t1 && balanceado t2
+
 {-
-    Función:
+    Función: 
     Descripción:
     Uso:
 -}
