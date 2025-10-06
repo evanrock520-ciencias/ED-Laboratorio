@@ -1,4 +1,8 @@
+module Practica6(nVacios, refleja, minimo, balanceado, listaArbol, recorrido, Aux.Arbol(Vacio, AB), TipoRecorrido(InOrden, PreOrden, PosOrden)) where
+
 import Aux(listaArbolReversa, inserta, altura, Arbol(Vacio, AB))
+
+data TipoRecorrido = InOrden | PreOrden | PosOrden deriving (Eq, Show)
 
 {-
     Función: nVacios
@@ -6,7 +10,7 @@ import Aux(listaArbolReversa, inserta, altura, Arbol(Vacio, AB))
     Uso: 
 -}
 
-nVacios :: Arbol a -> Int
+nVacios :: Aux.Arbol a -> Int
 nVacios Vacio = 1
 nVacios (AB r t1 t2) = nVacios t1 + nVacios t2
 
@@ -17,7 +21,7 @@ nVacios (AB r t1 t2) = nVacios t1 + nVacios t2
     Uso:
 -}
 
-refleja :: Arbol a -> Arbol a
+refleja :: Aux.Arbol a -> Aux.Arbol a
 refleja Vacio = Vacio
 refleja (AB r t1 t2) = AB r (refleja t2) (refleja t1)
 
@@ -27,7 +31,7 @@ refleja (AB r t1 t2) = AB r (refleja t2) (refleja t1)
     Uso: minimo (AB 2 (AB 10 Vacio Vacio) (AB 1 Vacio Vacio)) = 1
 -}
 
-minimo :: (Eq a) => (Ord a) => Arbol a -> a
+minimo :: (Eq a) => (Ord a) => Aux.Arbol a -> a
 minimo Vacio = error "El árbol vacío no tiene elementos"
 minimo (AB r Vacio Vacio) = r
 minimo (AB r t1 t2) 
@@ -41,9 +45,12 @@ minimo (AB r t1 t2)
     Uso: recorrido ( AB 4 Vacio ( AB 1 (AB 8 (AB 12 Vacio Vacio) Vacio ) ( AB 10 Vacio Vacio ) ) ) = [4,12,8,1,10]
 -}
 
-recorrido :: Arbol a -> [a]
-recorrido Vacio = []
-recorrido (AB r t1 t2) = recorrido t1 ++ [r] ++ recorrido t2
+recorrido :: Aux.Arbol a -> TipoRecorrido -> [a]
+recorrido Vacio tipoRecorrido = []
+recorrido (AB r t1 t2) InOrden = recorrido t1 InOrden ++ [r] ++ recorrido t2 InOrden
+recorrido (AB r t1 t2) PreOrden = r : (recorrido t1 PreOrden ++ recorrido t2 PreOrden)
+recorrido (AB r t1 t2) PosOrden = recorrido t1 PosOrden ++ recorrido t2 PosOrden ++ [r]
+
 
 {-
     Función: esBalanceado
@@ -51,7 +58,7 @@ recorrido (AB r t1 t2) = recorrido t1 ++ [r] ++ recorrido t2
     Uso: balanceado (AB 1 (AB 2 Vacio Vacio) (AB 3 (AB 6 Vacio Vacio) Vacio)) = True
 -}
 
-balanceado :: Arbol a -> Bool
+balanceado :: Aux.Arbol a -> Bool
 balanceado Vacio = True
 balanceado (AB r t1 t2) = abs (altura t1 - altura t2) <= 1 && balanceado t1 && balanceado t2
 
@@ -59,10 +66,10 @@ balanceado (AB r t1 t2) = abs (altura t1 - altura t2) <= 1 && balanceado t1 && b
     Función: listaArbol
     Descripción: Recibe una lista de elementos y regresa un árbol binario
     de búsqueda
-    Uso:
+    Uso: listaArbol [19, 28, 6, 87, 9, 12, 54] = AB 19 (AB 6 Vacio (AB 9 Vacio (AB 12 Vacio Vacio))) (AB 28 Vacio (AB 87 (AB 54 Vacio Vacio) Vacio))
 -}
 
-listaArbol :: (Ord a) => [a] -> Arbol a
+listaArbol :: (Ord a) => [a] -> Aux.Arbol a
 listaArbol [] = Vacio
 listaArbol xs = listaArbolReversa(reverse xs)
 
