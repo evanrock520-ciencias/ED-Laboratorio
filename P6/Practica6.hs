@@ -1,4 +1,4 @@
-module Practica6(nVacios, refleja, minimo, balanceado, listaArbol, recorrido, Aux.Arbol(Vacio, AB), TipoRecorrido(InOrden, PreOrden, PosOrden)) where
+module Practica6(nVacios, refleja, minimo, esBalanceado, listaArbol, recorrido, Aux.Arbol(Vacio, AB), TipoRecorrido(InOrden, PreOrden, PosOrden)) where
 
 import Aux(listaArbolReversa, inserta, altura, Arbol(Vacio, AB))
 
@@ -34,10 +34,9 @@ refleja (AB r t1 t2) = AB r (refleja t2) (refleja t1)
 minimo :: (Eq a) => (Ord a) => Aux.Arbol a -> a
 minimo Vacio = error "El árbol vacío no tiene elementos"
 minimo (AB r Vacio Vacio) = r
-minimo (AB r t1 t2) 
-    | r <= minimo t1 && r <= minimo t2 = r
-    | minimo t1 < minimo t2 = minimo t1
-    | minimo t2 < minimo t1 = minimo t2
+minimo (AB r t1 Vacio) = min r (minimo t1)
+minimo (AB r Vacio t2) = min r (minimo t2)
+minimo (AB r t1 t2) = min r (min (minimo t1)(minimo t2))
 
 {-
     Función: recorrido
@@ -58,9 +57,9 @@ recorrido (AB r t1 t2) PosOrden = recorrido t1 PosOrden ++ recorrido t2 PosOrden
     Uso: balanceado (AB 1 (AB 2 Vacio Vacio) (AB 3 (AB 6 Vacio Vacio) Vacio)) = True
 -}
 
-balanceado :: Aux.Arbol a -> Bool
-balanceado Vacio = True
-balanceado (AB r t1 t2) = abs (altura t1 - altura t2) <= 1 && balanceado t1 && balanceado t2
+esBalanceado :: Aux.Arbol a -> Bool
+esBalanceado Vacio = True
+esBalanceado (AB r t1 t2) = abs (altura t1 - altura t2) <= 1 && esBalanceado t1 && esBalanceado t2
 
 {-
     Función: listaArbol
