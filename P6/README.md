@@ -80,4 +80,16 @@ graph TB
 
 ## Tiempo requerido
 
+Para realizar esta pŕactica me tarde:
+
+- 35 mins en los árboles con marmaid.
+- 1 hora y 20 minutos haciendo las funciones.
+
+Para un total de **1 hora 55 minutos**.
+
 ## Comentarios Extra
+
+Me gusto la implementación del Mermaid para dibujar los árboles. Justo descubri una extension de VS CODE para mientras los hacia los visualizara.[ Extension: Markdown Preview Mermaid Support](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-mermaid)
+
+Las pruebas otra vez se me hicieron interesantes y bastante  oportunas. Creo que descubri como romper la circularidad sin crear un nuevo módulo (algo que no supe hacer en la práctica 4).
+
