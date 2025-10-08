@@ -85,6 +85,7 @@ Para realizar esta pŕactica me tarde:
 
 - 35 mins en los árboles con marmaid.
 - 1 hora y 20 minutos haciendo las funciones.
+- 15 minutos agregando documentación y funciones.
 
 Para un total de **1 hora 55 minutos**.
 
