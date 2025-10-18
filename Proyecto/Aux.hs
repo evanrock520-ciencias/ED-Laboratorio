@@ -1,4 +1,7 @@
-module Aux(ordena) where
+module Aux(ordena, Dict(..)) where
+
+-- Definiciones
+data Dict = Dict Int Char deriving (Eq, Ord, Show)
 
 {-
     función: misterio
@@ -16,6 +19,6 @@ misterio n (x:xs) = if n >= x then n : (x:xs) else x : misterio n xs
     uso: ordena [7, 98, 65, 100, 54, 12, 1] = [100,98,65,54,12,7,1]
 -}
 
-ordena :: Ord a => [a] -> [a]
+ordena :: [Dict] -> [Dict]
 ordena [] = []
-ordena (x:xs) = misterio x (ordena xs)
+ordena (d:xs) = misterio d (ordena xs)

@@ -1,8 +1,9 @@
 -- Importaciones
-import Aux(ordena)
+import Aux(ordena, Dict(..))
 
 -- Definición de Árbol
 data Arbol a = Vacio | Arbol a (Arbol a) (Arbol a) deriving (Eq, Show, Ord)
+
 
 {-
     función: contarApariciones
@@ -32,9 +33,9 @@ borraTodos x xs = filter (/= x) xs
     uso: crearListaApariciones "totopo" = [2,3,1]
 -}
 
-crearListaApariciones :: String -> [Int]
+crearListaApariciones :: String -> [Dict]
 crearListaApariciones "" = []
-crearListaApariciones (x:xs) = ordena (contarApariciones x (x:xs) : crearListaApariciones (borraTodos x xs))
+crearListaApariciones (x:xs) = ordena (Dict (contarApariciones x (x:xs)) x : crearListaApariciones (borraTodos x xs))
 
 
 
