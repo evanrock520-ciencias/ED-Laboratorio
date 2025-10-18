@@ -17,6 +17,16 @@ contarApariciones c (x:xs)
     | otherwise = contarApariciones c xs
 
 {-
+    función: borraTodos
+    descripción: Borra todas las apariciones de un carácter en una cadena.
+    uso: BorraTodos 's' "salsita" = "alita"
+-}
+
+borraTodos :: Char -> String -> String
+borraTodos _ "" = ""
+borraTodos x xs = filter (/= x) xs
+
+{-
     función: crearListaApariciones
     descripción: Crea una lista con la frecuencia de aparición de cada carácter en el String.
     uso: crearListaApariciones "totopo" = [2,3,1]
@@ -25,7 +35,3 @@ contarApariciones c (x:xs)
 crearListaApariciones :: String -> [Int]
 crearListaApariciones "" = []
 crearListaApariciones (x:xs) = contarApariciones x (x:xs) : crearListaApariciones (borraTodos x xs)
-
-borraTodos :: Char -> String -> String
-borraTodos _ "" = ""
-borraTodos x xs = filter (/= x) xs
