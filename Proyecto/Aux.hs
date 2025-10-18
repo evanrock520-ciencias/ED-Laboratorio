@@ -15,8 +15,8 @@ misterio n (x:xs) = if n >= x then n : (x:xs) else x : misterio n xs
 
 {-
     función: ordena
-    descripción: Ordena una lista de mayor a menor.
-    uso: ordena [7, 98, 65, 100, 54, 12, 1] = [100,98,65,54,12,7,1]
+    descripción: Ordena una lista de Dict de mayor a menor orden.
+    uso: ordena [Dict 2 'a', Dict 3 'z', Dict 1 'c'] = [Dict 3 'z',Dict 2 'a',Dict 1 'c']
 -}
 
 ordena :: [Dict] -> [Dict]
