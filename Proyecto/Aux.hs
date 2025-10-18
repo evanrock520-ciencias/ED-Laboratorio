@@ -1,7 +1,7 @@
 module Aux(ordena, Dict(..)) where
 
 -- Definiciones
-data Dict = Dict Int Char deriving (Eq, Ord, Show)
+data Dict = Nada |Dict Int Char deriving (Eq, Ord, Show)
 
 {-
     función: misterio

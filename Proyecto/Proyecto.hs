@@ -2,7 +2,7 @@
 import Aux(ordena, Dict(..))
 
 -- Definición de Árbol
-data Arbol a = Vacio | Arbol Dict (Arbol Dict) (Arbol Dict) deriving (Eq, Show, Ord)
+data Arbol a = Vacio | Arbol Char (Arbol Char) (Arbol Char) deriving (Eq, Show, Ord)
 
 
 {-
@@ -45,7 +45,7 @@ crearListaApariciones (x:xs) = ordena (Dict (contarApariciones x (x:xs)) x : cre
 
 arbolHuffman :: [Dict] -> Arbol a
 arbolHuffman [] = Vacio
-arbolHuffman (x:xs) = Arbol (Dict 0 ' ') (arbolHuffman xs) (Arbol x Vacio Vacio) 
+arbolHuffman (x:xs) = Arbol ' ' (arbolHuffman xs) (Arbol (devuelveChar x) Vacio Vacio) 
 
 {-
     función: creaArbol
@@ -57,6 +57,13 @@ creaArbol :: String -> Arbol a
 creaArbol "" = Vacio
 creaArbol xs = arbolHuffman (crearListaApariciones xs)
 
+{-
+    función: devuelveChar
+    descripción: Regresa el char de un Dict
+    uso:
+-}
 
-
+devuelveChar :: Dict -> Char
+devuelveChar Nada = ' ';
+devuelveChar (Dict n c) = c
 
