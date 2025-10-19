@@ -127,3 +127,13 @@ splitear (x:xs) =
         then [x]
     else x : splitear xs
 
+{-
+    función: recorta
+    descripción: Regresa una cadena recortada n posiciones
+    uso: recorta "Gumball" 3 = "ball" 
+-}
+
+recorta :: String -> Int -> String
+recorta "" _ = ""
+recorta xs 0 = xs
+recorta (x:xs) n = recorta xs (n-1)
