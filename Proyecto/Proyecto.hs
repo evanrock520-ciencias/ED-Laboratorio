@@ -151,3 +151,14 @@ descifraBinario (x:xs) (Arbol _ izq der)
     | x == '1' = descifraBinario xs der
     | x == '0' = descifraBinario xs izq
     | otherwise = error "El código contiene un carácter no binario"
+
+{-
+    función: descifrar
+    descripción: Descifra una cadena cifrada con un árbol de Hauffman.
+    uso: descifrar "01100010011" (Arbol ' ' (Arbol ' ' (Arbol ' ' (Arbol ' ' Vacio (Arbol 'c' Vacio Vacio)) (Arbol 'h' Vacio Vacio)) (Arbol 'm' Vacio Vacio)) (Arbol 'i' Vacio Vacio)) = "michi"
+-}
+
+descifrar :: String -> Arbol Char -> String
+descifrar "" _ = ""
+descifrar _ Vacio = error "No se puede descifrar con un árbol vacío"
+descifrar s t = descifraBinario (splitear s) t : descifrar (recorta s (length (splitear s))) t
