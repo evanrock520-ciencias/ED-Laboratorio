@@ -113,3 +113,17 @@ cifrar (x:xs) t = determinaBinario x t ++ cifrar xs t
 usarCifrado :: String -> String
 usarCifrado "" = ""
 usarCifrado s = cifrar s (creaArbol s)
+
+{-
+    función: splitear
+    descripción: Obtiene las cadenas binarias para el árbol de Huffman
+    uso: splitear "000101" = "0001"
+-}
+
+splitear :: String -> String
+splitear "" = ""
+splitear (x:xs) = 
+    if x == '1'
+        then [x]
+    else x : splitear xs
+
