@@ -137,3 +137,17 @@ recorta :: String -> Int -> String
 recorta "" _ = ""
 recorta xs 0 = xs
 recorta (x:xs) n = recorta xs (n-1)
+
+{-
+    función: descifraBinario
+    descripción: Descifra un carácter binario con un árbol de Huffman
+    uso: descifraBinario "1" (Arbol ' ' (Arbol ' ' (Arbol ' ' Vacio (Arbol 'y' Vacio Vacio)) (Arbol 'p' Vacio Vacio)) (Arbol 'a' Vacio Vacio)) = 'a'
+-}
+
+descifraBinario :: String -> Arbol Char -> Char
+descifraBinario _ (Arbol r Vacio Vacio) = r
+descifraBinario "" _ = error "No se puede descifrar la cadena vacía"
+descifraBinario (x:xs) (Arbol _ izq der)
+    | x == '1' = descifraBinario xs der
+    | x == '0' = descifraBinario xs izq
+    | otherwise = error "El código contiene un carácter no binario"
