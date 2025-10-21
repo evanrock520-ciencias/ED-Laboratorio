@@ -1,8 +1,11 @@
 # Codificación de Huffman
 
 ## Objetivo 
+Realizar la implementación de compresión de archivos de Huffman. 
+Codificar y decodificar archivos de texto a partir de árboles de Huffman.
 
 ## Funcionamiento
+
 
 ## Ejecución
 
