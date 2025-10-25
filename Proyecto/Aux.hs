@@ -1,4 +1,4 @@
-module Aux(ordena, Dict(..), contarApariciones, splitear, recorta, devuelveChar, borraTodos) where
+module Aux(ordena, Dict(..), contarApariciones, splitear, recorta, devuelveChar, borraTodos, crearListaApariciones) where
 
 -- Definiciones
 data Dict = Nada |Dict Int Char deriving (Eq, Ord, Show)
