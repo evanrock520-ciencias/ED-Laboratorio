@@ -1,41 +1,8 @@
 -- Importaciones
-import Aux(ordena, Dict(..))
+import Aux(ordena, Dict(..), contarApariciones, splitear, recorta, devuelveChar, borraTodos, crearListaApariciones)
 
 -- Definición de Árbol
 data Arbol a = Vacio | Arbol Char (Arbol Char) (Arbol Char) deriving (Eq, Show, Ord)
-
-
-{-
-    función: contarApariciones
-    descripción: Cuenta el número de apariciones de un carácter en un string.
-    uso: contarApariciones 'a' "haskell es amor" = 2
--}
-
-contarApariciones :: Char -> String -> Int
-contarApariciones _ "" = 0;
-contarApariciones c (x:xs)
-    | c == x = 1 + contarApariciones c xs
-    | otherwise = contarApariciones c xs
-
-{-
-    función: borraTodos
-    descripción: Borra todas las apariciones de un carácter en una cadena.
-    uso: BorraTodos 's' "salsita" = "alita"
--}
-
-borraTodos :: Char -> String -> String
-borraTodos _ "" = ""
-borraTodos x xs = filter (/= x) xs
-
-{-
-    función: crearListaApariciones
-    descripción: Crea una lista con la frecuencia de aparición de cada carácter en el String.
-    uso: crearListaApariciones "totopo" = [2,3,1]
--}
-
-crearListaApariciones :: String -> [Dict]
-crearListaApariciones "" = []
-crearListaApariciones (x:xs) = ordena (Dict (contarApariciones x (x:xs)) x : crearListaApariciones (borraTodos x xs))
 
 {-
     función: arbolHuffman
@@ -45,7 +12,7 @@ crearListaApariciones (x:xs) = ordena (Dict (contarApariciones x (x:xs)) x : cre
 
 arbolHuffman :: [Dict] -> Arbol Char
 arbolHuffman [] = Vacio
-arbolHuffman (x:xs) = Arbol ' ' (arbolHuffman xs) (Arbol (devuelveChar x) Vacio Vacio)
+arbolHuffman (x:xs) = Arbol '\t' (arbolHuffman xs) (Arbol (devuelveChar x) Vacio Vacio)
 
 {-
     función: creaArbol
@@ -58,16 +25,6 @@ creaArbol "" = Vacio
 creaArbol xs = arbolHuffman (crearListaApariciones xs)
 
 {-
-    función: devuelveChar
-    descripción: Regresa el char de un Dict
-    uso: devuelveChar (Dict 8 'e') = 'e'
--}
-
-devuelveChar :: Dict -> Char
-devuelveChar Nada = ' ';
-devuelveChar (Dict n c) = c
-
-{-
     función: existeEn
     descripción: Determina si un carácter existe en un árbol
     uso: existeEn 'b' (Arbol ' ' (Arbol ' ' Vacio (Arbol 'a' Vacio Vacio)) (Arbol 'p' Vacio Vacio)) = False
@@ -78,6 +35,7 @@ existeEn _ Vacio = False
 existeEn char (Arbol c izq der)
     | char == c = True
     | otherwise = existeEn char izq || existeEn char der
+
 
 {-
     función: determinaBinario
@@ -113,30 +71,6 @@ cifrar (x:xs) t = determinaBinario x t ++ cifrar xs t
 usarCifrado :: String -> String
 usarCifrado "" = ""
 usarCifrado s = cifrar s (creaArbol s)
-
-{-
-    función: splitear
-    descripción: Obtiene las cadenas binarias para el árbol de Huffman
-    uso: splitear "000101" = "0001"
--}
-
-splitear :: String -> String
-splitear "" = ""
-splitear (x:xs) = 
-    if x == '1'
-        then [x]
-    else x : splitear xs
-
-{-
-    función: recorta
-    descripción: Regresa una cadena recortada n posiciones
-    uso: recorta "Gumball" 3 = "ball" 
--}
-
-recorta :: String -> Int -> String
-recorta "" _ = ""
-recorta xs 0 = xs
-recorta (x:xs) n = recorta xs (n-1)
 
 {-
     función: descifraBinario
