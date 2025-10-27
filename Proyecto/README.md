@@ -107,5 +107,8 @@ Y tenemos el mensaje descifrado de nuevo.
 - Crear árbol de Huffman: 30 minutos.
 - Codificar: 45 minutos.
 - Decodificar: 30 minutos
+- README : 60 minutos
 
 ## Comentarios Extra
+
+Podriamos realizar el vaciado de datos binarios a un archivo para ver en funcionamiento la compresión del espacio.
