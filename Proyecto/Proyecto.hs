@@ -3,6 +3,7 @@ import Aux(ordena, Dict(..), contarApariciones, splitear, recorta, devuelveChar,
 
 -- Definición de Árbol
 data Arbol a = Vacio | Arbol Char (Arbol Char) (Arbol Char) deriving (Eq, Show, Ord)
+data HuffmanThree = Va | Hoja Char | Nodo HuffmanThree HuffmanThree HuffmanThree deriving (Eq, Show, Ord)
 
 {-
     función: arbolHuffman
