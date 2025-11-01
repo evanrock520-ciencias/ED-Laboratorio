@@ -37,7 +37,7 @@ Para cifrar una cadena de texto se debe realizar lo siguiente:
 1. Definimos la frase que queremos cifrar.
 
 ``` bash
-ghci> p = "calabaza endemoniada del demonio"
+ghci> p = "Cantata de puentes amarillos"
 ```
 
 2. Usamos la función **usarCifrado** para obtener la cadena comprimida de nuestro mensaje.
@@ -45,7 +45,7 @@ ghci> p = "calabaza endemoniada del demonio"
 ```bash
 ghci> c = usarCifrado p
 ghci> c
-"00000000001100000001100000000000110000000001100000101000010010100000010001000010000000011001100000100101000000010000010010100000010001000010000000010001"
+"0000000000000011000001011011000100000000000001001000100000000010000000100100000101001000010001100000000000110000000010000000000001000000100000010000000000100001"
 ```
 
 ### Descifrar
@@ -57,26 +57,26 @@ Para descifrar una cadena de texto vamos a necesitar la cadena binaria y el árb
 ```bash
 ghci> a = creaArbol p
 ghci> a
-Arbol '\t' (Arbol '\t' (Arbol '\t' (Arbol '\t' (Arbol '\t' (Arbol '\t' (Arbol '\t' (Arbol '\t' (Arbol '\t' (Arbol '\t' (Arbol '\t' (Arbol '\t' Vacio (Arbol 'b' Vacio Vacio)) (Arbol 'c' Vacio Vacio)) (Arbol 'z' Vacio Vacio)) (Arbol 'i' Vacio Vacio)) (Arbol 'l' Vacio Vacio)) (Arbol 'm' Vacio Vacio)) (Arbol ' ' Vacio Vacio)) (Arbol 'n' Vacio Vacio)) (Arbol 'o' Vacio Vacio)) (Arbol 'd' Vacio Vacio)) (Arbol 'e' Vacio Vacio)) (Arbol 'a' Vacio Vacio)
+Nodo (Nodo (Nodo (Nodo (Nodo (Nodo (Nodo (Nodo (Nodo (Nodo (Nodo (Nodo (Nodo (Nodo (Nodo Vacio (Hoja 'C')) (Hoja 'd')) (Hoja 'i')) (Hoja 'm')) (Hoja 'o')) (Hoja 'p')) (Hoja 'r')) (Hoja 'u')) (Hoja 'l')) (Hoja 'n')) (Hoja 's')) (Hoja ' ')) (Hoja 'e')) (Hoja 't')) (Hoja 'a')
 ```
 
 Podemos observar su visualización con Mermaid de la siguiente manera:
 
 ```mermaid
 graph TD
-    B["'\t'"]
-    B --> C["'\t'"]
-    C --> D["'\t'"]
-    D --> E["'\t'"]
-    E --> F["'\t'"]
-    F --> G["'\t'"]
-    G --> H["'\t'"]
-    H --> I["'\t'"]
-    I --> J["'\t'"]
-    J --> K["'\t'"]
-    K --> L["'\t'"]
-    L --> M["'\t'"]
-    M --> P["\t"]
+    B[" "]
+    B --> C[" "]
+    C --> D[" "]
+    D --> E[" "]
+    E --> F[" "]
+    F --> G[" "]
+    G --> H[" "]
+    H --> I[" "]
+    I --> J[" "]
+    J --> K[" "]
+    K --> L[" "]
+    L --> M[" "]
+    M --> P[" "]
     M --> b["'b'"]
     L --> c["'c'"]
     K --> z["'z'"]
@@ -96,7 +96,7 @@ graph TD
 
 ```bash
 ghci> descifrar c a
-"calabaza endemoniada del demonio"
+"Cantata de puentes amarillos"
 ```
 
 Y tenemos el mensaje descifrado de nuevo.
