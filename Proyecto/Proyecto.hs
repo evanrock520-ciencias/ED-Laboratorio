@@ -1,5 +1,5 @@
 -- Importaciones
-import Aux(ordena, Dict(..), contarApariciones, splitear, recorta, devuelveChar, borraTodos, crearListaApariciones)
+import Aux(quicksort, Dict(..), contarApariciones, splitear, recorta, devuelveChar, borraTodos, crearListaApariciones)
 
 -- Definición de Árbol
 data HuffmanTree = Vacio | Hoja Char | Nodo HuffmanTree HuffmanTree deriving (Eq, Show, Ord)
@@ -16,7 +16,7 @@ arbolHuffman (x:xs) = Nodo (arbolHuffman xs) (Hoja (devuelveChar x))
 
 {-
     función: creaArbol
-    descripción: Crear un árbol de Huffman a partir de una lista de Dict ordenados.
+    descripción: Crear un árbol de Huffman a partir de una lista de Dict ordenada.
     uso: creaArbol "calabaza" = Nodo (Nodo (Nodo (Nodo (Nodo Vacio (Hoja 'b')) (Hoja 'c')) (Hoja 'l')) (Hoja 'z')) (Hoja 'a')
 -}
 

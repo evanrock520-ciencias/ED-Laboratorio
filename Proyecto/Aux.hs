@@ -1,27 +1,20 @@
-module Aux(ordena, Dict(..), contarApariciones, splitear, recorta, devuelveChar, borraTodos, crearListaApariciones) where
+module Aux(quicksort, Dict(..), contarApariciones, splitear, recorta, devuelveChar, borraTodos, crearListaApariciones) where
 
 -- Definiciones
 data Dict = Nada |Dict Int Char deriving (Eq, Ord, Show)
 
 {-
-    función: misterio
-    descripción: Añade un elemento de manera ordena a una lista ordenada de mayor a menor.
-    uso: misterio 7 [9,8,6,5] = [9,8,7,6,5]
+    función: quicksort
+    descripción: ordena una lista de Dict por el algoritmo de quicksort
+    uso: quicksort [Dict 2 's',Dict 2 'l',Dict 2 'e',Dict 2 'a',Dict 2 ' ',Dict 1 'r',Dict 1 'o',Dict 1 'm',Dict 1 'k',Dict 1 'h']
+                        = [Dict 2 's',Dict 2 'l',Dict 2 'e',Dict 2 'a',Dict 2 ' ',Dict 1 'r',Dict 1 'o',Dict 1 'm',Dict 1 'k',Dict 1 'h']
 -}
-
-misterio :: Ord t => t -> [t] -> [t]
-misterio x [] = [x]
-misterio n (x:xs) = if n >= x then n : (x:xs) else x : misterio n xs
-
-{-
-    función: ordena
-    descripción: Ordena una lista de Dict de mayor a menor orden.
-    uso: ordena [Dict 2 'a', Dict 3 'z', Dict 1 'c'] = [Dict 3 'z',Dict 2 'a',Dict 1 'c']
--}
-
-ordena :: [Dict] -> [Dict]
-ordena [] = []
-ordena (d:xs) = misterio d (ordena xs)
+quicksort :: [Dict] -> [Dict]
+quicksort [] = []
+quicksort (x:xs) =
+    let mayores = [y | y <- xs, y >= x]
+        menores = [y | y <- xs, y < x]
+    in quicksort mayores ++ [x] ++ quicksort menores
 
 {-
     función: contarApariciones
@@ -87,4 +80,4 @@ borraTodos x xs = filter (/= x) xs
 
 crearListaApariciones :: String -> [Dict]
 crearListaApariciones "" = []
-crearListaApariciones (x:xs) = ordena (Dict (contarApariciones x (x:xs)) x : crearListaApariciones (borraTodos x xs))
+crearListaApariciones (x:xs) = quicksort (Dict (contarApariciones x (x:xs)) x : crearListaApariciones (borraTodos x xs))
