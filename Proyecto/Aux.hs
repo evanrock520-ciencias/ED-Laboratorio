@@ -23,7 +23,7 @@ quicksort (x:xs) =
 -}
 
 contarApariciones :: Char -> String -> Int
-contarApariciones _ "" = 0;
+contarApariciones _ "" = 0
 contarApariciones c (x:xs)
     | c == x = 1 + contarApariciones c xs
     | otherwise = contarApariciones c xs
@@ -59,7 +59,7 @@ recorta (x:xs) n = recorta xs (n-1)
 -}
 
 devuelveChar :: Dict -> Char
-devuelveChar Nada = ' ';
+devuelveChar Nada = ' '
 devuelveChar (Dict n c) = c
 
 {-
@@ -80,4 +80,4 @@ borraTodos x xs = filter (/= x) xs
 
 crearListaApariciones :: String -> [Dict]
 crearListaApariciones "" = []
-crearListaApariciones (x:xs) = quicksort (Dict (contarApariciones x (x:xs)) x : crearListaApariciones (borraTodos x xs))
+crearListaApariciones (x:xs) = Dict (contarApariciones x (x:xs)) x : crearListaApariciones (borraTodos x xs)

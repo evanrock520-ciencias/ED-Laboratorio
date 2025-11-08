@@ -22,7 +22,7 @@ arbolHuffman (x:xs) = Nodo (arbolHuffman xs) (Hoja (devuelveChar x))
 
 creaArbol :: String -> HuffmanTree
 creaArbol "" = Vacio
-creaArbol xs = arbolHuffman (crearListaApariciones xs)
+creaArbol xs = arbolHuffman (quicksort (crearListaApariciones xs))
 
 {-
     función: existeEn
