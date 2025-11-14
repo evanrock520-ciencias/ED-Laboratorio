@@ -5,14 +5,14 @@ import Aux(quicksort, Dict(..), contarApariciones, splitear, recorta, devuelveCh
 data HuffmanTree = Vacio | Hoja Char | Nodo HuffmanTree HuffmanTree deriving (Eq, Show, Ord)
 
 {-
-    función: arbolHuffman
+    función: construirArbol
     descripción: Transporta una lista de Dict a un árbol de Huffman
-    uso: arbolHuffman [Dict 8 'r', Dict 4 'd', Dict 2 'a'] = Nodo (Nodo (Nodo Vacio (Hoja 'a')) (Hoja 'd')) (Hoja 'r')
+    uso: construirArbol [Dict 8 'r', Dict 4 'd', Dict 2 'a'] = Nodo (Nodo (Nodo Vacio (Hoja 'a')) (Hoja 'd')) (Hoja 'r')
 -}
 
-arbolHuffman :: [Dict] -> HuffmanTree
-arbolHuffman [] = Vacio
-arbolHuffman (x:xs) = Nodo (arbolHuffman xs) (Hoja (devuelveChar x))
+construirArbol :: [Dict] -> HuffmanTree
+construirArbol [] = Vacio
+construirArbol (x:xs) = Nodo (construirArbol xs) (Hoja (devuelveChar x))
 
 {-
     función: creaArbol
@@ -22,7 +22,7 @@ arbolHuffman (x:xs) = Nodo (arbolHuffman xs) (Hoja (devuelveChar x))
 
 creaArbol :: String -> HuffmanTree
 creaArbol "" = Vacio
-creaArbol xs = arbolHuffman (quicksort (crearListaApariciones xs))
+creaArbol xs = construirArbol (quicksort (crearListaApariciones xs))
 
 {-
     función: existeEn
