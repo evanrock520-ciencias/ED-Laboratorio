@@ -25,46 +25,6 @@ creaArbol "" = Vacio
 creaArbol xs = construirArbol (quicksort (crearListaApariciones xs))
 
 {-
-    función: existeEn
-    descripción: Determina si un carácter existe en un árbol
-    uso: existeEn 'g' (Nodo (Nodo (Nodo (Nodo (Nodo (Nodo (Nodo Vacio (Hoja 'a')) (Hoja 'e')) (Hoja 'h')) (Hoja 'm')) (Hoja 'n')) (Hoja 'o')) (Hoja 't')) = False
--}
-
-existeEn :: Char -> HuffmanTree -> Bool
-existeEn _ Vacio = False
-existeEn char (Hoja c) = char == c
-existeEn char (Nodo izq der) = existeEn char izq || existeEn char der
-
-
-{-
-    función: determinaBinario
-    descripción: Cifra una cadena a partir de un árbol de Huffman.
-    uso: determinaBinario 'm' (Nodo (Nodo (Nodo (Nodo (Nodo (Nodo (Nodo Vacio (Hoja 'a')) (Hoja 'e')) (Hoja 'h')) (Hoja 'm')) (Hoja 'n')) (Hoja 'o')) (Hoja 't')) = "0001"
--}
-
-determinaBinario :: Char -> HuffmanTree -> String
-determinaBinario _ Vacio = ""
-determinaBinario x (Hoja c)
-    | x == c    = ""
-    | otherwise = "#"
-determinaBinario x (Nodo izq der)
-    | existeEn x izq = '0' : determinaBinario x izq
-    | existeEn x der = '1' : determinaBinario x der
-    | otherwise = ""
-
-
-{-
-    función: cifrar
-    descripción: Regresa el cifrado de una cadena.
-    uso: cifrar "papaya" (Nodo (Nodo (Nodo Vacio (Hoja 'y')) (Hoja 'p')) (Hoja 'a')) = "0110110011"
--}
-
-cifrar :: String -> HuffmanTree -> String
-cifrar "" _ = ""
-cifrar _ Vacio = error "No se puede cifrar con el árbol vacío"
-cifrar (x:xs) t = determinaBinario x t ++ cifrar xs t
-
-{-
     función: usarCifrado
     descripción: Regresa el cifrado binario de una cadena usando el árbol de Huffman que le corresponde.
     uso: usarCifrado "totopo" = "0110110011"
@@ -72,7 +32,7 @@ cifrar (x:xs) t = determinaBinario x t ++ cifrar xs t
 
 usarCifrado :: String -> String
 usarCifrado "" = ""
-usarCifrado s = cifrar s (creaArbol s)
+usarCifrado s = codificar s (generarTabla(creaArbol s))
 
 {-
     función: descifraBinario
@@ -99,18 +59,45 @@ descifrar "" _ = ""
 descifrar _ Vacio = error "No se puede descifrar con un árbol vacío"
 descifrar s t = descifraBinario (splitear s) t : descifrar (recorta s (length (splitear s))) t
 
-
--- Ideas extra de la clase (Por implementar)
+{-
+    función: generarTablaAux
+    descripción:
+    uso: ghci> generarTablaAux (Nodo (Nodo (Nodo (Nodo (Nodo (Nodo (Nodo Vacio (Hoja 'h')) (Hoja 'i')) (Hoja 's')) (Hoja 't')) (Hoja 'w')) (Hoja 'l')) (Hoja 'o')) ""
+                = [('h',"0000001"),('i',"000001"),('s',"00001"),('t',"0001"),('w',"001"),('l',"01"),('o',"1")]
+-}
 generarTablaAux :: HuffmanTree -> String -> [(Char, String)]
 generarTablaAux Vacio _ = []
 generarTablaAux (Hoja c) camino = [(c, camino)]
 generarTablaAux (Nodo izq der) camino = generarTablaAux izq (camino ++ "0") ++ generarTablaAux der (camino ++ "1")
 
+{-
+    función: generarTabla
+    descripción:
+    uso: generarTabla (Nodo (Nodo (Nodo (Nodo (Nodo (Nodo (Nodo Vacio (Hoja 'h')) (Hoja 'i')) (Hoja 's')) (Hoja 't')) (Hoja 'w')) (Hoja 'l')) (Hoja 'o'))
+                = [('h',"0000001"),('i',"000001"),('s',"00001"),('t',"0001"),('w',"001"),('l',"01"),('o',"1")]
+-}
 generarTabla :: HuffmanTree -> [(Char, String)]
 generarTabla arbol = generarTablaAux arbol ""
 
+{-
+    función: buscarCodigo
+    descripción:
+    uso: buscarCodigo 'i' ([('h',"0000001"),('i',"000001"),('s',"00001"),('t',"0001"),('w',"001"),('l',"01"),('o',"1")]) = "000001"
+-}
 buscarCodigo :: Char -> [(Char, String)] -> String
 buscarCodigo _ [] = error "No se puede buscar código en una lista vacía"
 buscarCodigo c ((a, codigo):xs)
     | c == a = codigo
     | otherwise = buscarCodigo c xs
+
+{-
+    función: codificar
+    descripción:
+    uso: codificar "hollowsito" ([('h',"0000001"),('i',"000001"),('s',"00001"),('t',"0001"),('w',"001"),('l',"01"),('o',"1")])
+        = "00000011010110010000100000100011"
+-}
+codificar :: String -> [(Char, String)] -> String
+codificar [] _ = ""
+codificar (c:cs) tabla =
+    let codigoChar = buscarCodigo c tabla
+    in codigoChar ++ codificar cs tabla
