@@ -1,5 +1,5 @@
 -- Importaciones
-import Aux(quicksort, Dict(..), contarApariciones, splitear, recorta, devuelveChar, borraTodos, crearListaApariciones)
+import Aux
 
 -- Definición de Árbol
 data HuffmanTree = Vacio | Hoja Char | Nodo HuffmanTree HuffmanTree deriving (Eq, Show, Ord)
@@ -45,8 +45,8 @@ existeEn char (Nodo izq der) = existeEn char izq || existeEn char der
 determinaBinario :: Char -> HuffmanTree -> String
 determinaBinario _ Vacio = ""
 determinaBinario x (Hoja c)
-    | x == c    = ""     
-    | otherwise = "#" 
+    | x == c    = ""
+    | otherwise = "#"
 determinaBinario x (Nodo izq der)
     | existeEn x izq = '0' : determinaBinario x izq
     | existeEn x der = '1' : determinaBinario x der
@@ -98,3 +98,19 @@ descifrar :: String -> HuffmanTree -> String
 descifrar "" _ = ""
 descifrar _ Vacio = error "No se puede descifrar con un árbol vacío"
 descifrar s t = descifraBinario (splitear s) t : descifrar (recorta s (length (splitear s))) t
+
+
+-- Ideas extra de la clase (Por implementar)
+generarTablaAux :: HuffmanTree -> String -> [(Char, String)]
+generarTablaAux Vacio _ = []
+generarTablaAux (Hoja c) camino = [(c, camino)]
+generarTablaAux (Nodo izq der) camino = generarTablaAux izq (camino ++ "0") ++ generarTablaAux der (camino ++ "1")
+
+generarTabla :: HuffmanTree -> [(Char, String)]
+generarTabla arbol = generarTablaAux arbol ""
+
+buscarCodigo :: Char -> [(Char, String)] -> String
+buscarCodigo _ [] = error "No se puede buscar código en una lista vacía"
+buscarCodigo c ((a, codigo):xs)
+    | c == a = codigo
+    | otherwise = buscarCodigo c xs
