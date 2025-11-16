@@ -1,17 +1,17 @@
-# Codificación de Huffman
+# 🌳 Codificación de Huffman
 
-## Objetivo
+## 🎯 Objetivo
 
 Realizar la implementación de compresión de archivos de Huffman.
 
 Codificar y decodificar archivos de texto a partir de árboles de Huffman.
 
-## Funcionamiento
+## 📢 Funcionamiento
 
 El programa analiza la frecuencia de aparición de cada carácter en una cadena de texto, construye un árbol de Huffman y genera una codificación binaria única para cada símbolo.
 Posteriormente, es posible revertir el proceso (decodificación) utilizando el árbol original.
 
-## Ejecución
+## 🏃‍➡️ Ejecución
 
 Lo primero que se debe hacer para cifrar o descifrar una cadena de texto con este programa es abir el intérprete de Haskell.
 En este caso podemos usar **GHCI** en la carpeta raíz del proyecto.
@@ -30,7 +30,7 @@ Ok, two modules loaded.
 ghci> 
 ```
 
-### Cifrar
+### 🎲 Cifrar
 
 Para cifrar una cadena de texto se debe realizar lo siguiente:
 
@@ -48,7 +48,7 @@ ghci> c
 "0000000000000011000001011011000100000000000001001000100000000010000000100100000101001000010001100000000000110000000010000000000001000000100000010000000000100001"
 ```
 
-### Descifrar
+### 🎰 Descifrar
 
 Para descifrar una cadena de texto vamos a necesitar la cadena binaria y el árbol asociado a la cadena sin cifrado. Para este ejemplo vamos a usar la frase que ya definimos y creando su árbol correspondiente.
 
@@ -139,7 +139,7 @@ ghci> descifrar c a
 
 Y tenemos el mensaje descifrado de nuevo.
 
-## Tiempo Requerido
+## ⏰ Tiempo Requerido
 
 - Frecuencias de carácteres: 25 minutos
 - Crear árbol de Huffman: 30 minutos.
