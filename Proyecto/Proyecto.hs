@@ -2,14 +2,14 @@
 import Aux
 
 {-
-    función: usarCifrado
+    función: cifrar
     descripción: Regresa el cifrado binario de una cadena usando el árbol de Huffman que le corresponde.
-    uso: usarCifrado "totopo" = "0110110011"
+    uso: cifrar "totopo" = "0110110011"
 -}
 
-usarCifrado :: String -> String
-usarCifrado "" = ""
-usarCifrado s = codificar s (generarTabla(creaArbol s))
+cifrar :: String -> String
+cifrar "" = ""
+cifrar s = codificar s (generarTabla(creaArbol s))
 
 {-
     función: descifrar
