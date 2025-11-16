@@ -40,10 +40,10 @@ Para cifrar una cadena de texto se debe realizar lo siguiente:
 ghci> p = "Cantata de puentes amarillos"
 ```
 
-2. Usamos la función **usarCifrado** para obtener la cadena comprimida de nuestro mensaje.
+2. Usamos la función **cifrar** para obtener la cadena comprimida de nuestro mensaje.
 
 ```bash
-ghci> c = usarCifrado p
+ghci> c = cifrar p
 ghci> c
 "0000000000000011000001011011000100000000000001001000100000000010000000100100000101001000010001100000000000110000000010000000000001000000100000010000000000100001"
 ```
