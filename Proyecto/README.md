@@ -146,6 +146,8 @@ Y tenemos el mensaje descifrado de nuevo.
 - Codificar: 45 minutos.
 - Decodificar: 30 minutos
 - README : 60 minutos
+- Modificaciones en código, optimización, cambios de diseño: 4 horas
+- Reporte con LaTex: 5 horas
 
 ## Comentarios Extra
 
