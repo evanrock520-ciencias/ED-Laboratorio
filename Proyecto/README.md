@@ -13,7 +13,19 @@ Posteriormente, es posible revertir el proceso (decodificación) utilizando el �
 
 ## 🏃‍➡️ Ejecución
 
-Lo primero que se debe hacer para cifrar o descifrar una cadena de texto con este programa es abir el intérprete de Haskell.
+Antes que nada tienes que clonar el repositorio para acceder a este programa. Simplemente ejecuta:
+
+``` bash
+git clone https://github.com/evanrock520-ciencias/ED-Laboratorio.git
+```
+
+Desde la carpeta raíz cambiate al directorio ***Proyecto***.
+
+``` bash
+cd Proyecto/
+```
+
+A partir de aqui, lo primero que se debe hacer para cifrar o descifrar una cadena de texto con este programa es abir el intérprete de Haskell.
 En este caso podemos usar **GHCI** en la carpeta raíz del proyecto.
 
 ``` bash
